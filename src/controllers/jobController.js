@@ -54,6 +54,24 @@ const filterByLocation = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 };
+const filterByIndustry = async (req, res) => {
+    try {
+        const { industry } = req.body;
+        const jobs = await Job.find({ industry });
+        res.status(200).json(jobs);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+const filterByJobType = async (req, res) => {
+    try {
+        const { jobType } = req.body;
+        const jobs = await Job.find({ jobType });
+        res.status(200).json(jobs);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
 
 
-module.exports = { createJob, getJobs, getJobById, updateJob, deleteJob, filterByLocation };
+module.exports = { createJob, getJobs, getJobById, updateJob, deleteJob, filterByLocation, filterByIndustry, filterByJobType };

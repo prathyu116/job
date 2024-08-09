@@ -1,11 +1,12 @@
 const express = require('express');
-const { createJob, getJobs, getJobById, updateJob, deleteJob,filterByLocation } = require('../controllers/jobController');
+const { createJob, getJobs, getJobById, updateJob, deleteJob, filterByLocation, filterByIndustry, filterByJobType } = require('../controllers/jobController');
 const router = express.Router();
 
 router.post('/', createJob);
 router.get('/', getJobs);
-router.get('/location', filterByLocation);
-
+router.post('/location', filterByLocation);
+router.post('/industry', filterByIndustry);
+router.post('/jobType', filterByJobType);
 router.get('/:id', getJobById);
 router.put('/:id', updateJob);
 router.delete('/:id', deleteJob);
